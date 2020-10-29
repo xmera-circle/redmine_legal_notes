@@ -6,5 +6,8 @@ Redmine::Plugin.register :redmine_legal_notes do
   url 'https://circle.xmera.de/projects/redmine-legal-notes'
   author_url 'http://xmera.de'
 
-  requires_redmine version_or_higher: '4.0.0'
+  requires_redmine version_or_higher: '4.1.0'
+
+  settings  partial: RedmineLegalNotes.partial,
+            default: RedmineLegalNotes.defaults
 end
