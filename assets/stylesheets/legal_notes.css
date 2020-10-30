@@ -1,0 +1,15 @@
+/* Settings */
+.controller-settings .tabular.settings .legal-notes-settings p {
+  padding-left: 3px;
+}
+
+/* Footer */
+.legal-notes-link {
+  padding-top: 1rem;
+}
+
+/* Pages */
+.controller-legal_notes #main {
+  min-width: 920px;
+  margin: 0 auto;
+}

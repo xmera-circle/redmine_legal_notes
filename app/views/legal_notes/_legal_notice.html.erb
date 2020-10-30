@@ -2,7 +2,6 @@
   <em class="info"><%= l(:note_legal_notice) %></em> 
   <%= text_area_tag 'settings[legal_notice]', 
     @settings.fetch(:legal_notice, @plugin.settings[:default][:legal_notice]), 
-      class: 'wiki-edit', rows: 20 %>
-		 
+      class: 'wiki-edit', rows: 20 %>	 
 </p>
 <%= wikitoolbar_for('settings_legal_notice') %>
