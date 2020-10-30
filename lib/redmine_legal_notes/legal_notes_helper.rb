@@ -33,10 +33,10 @@ module RedmineLegalNotes
     module LegalNotesHelper
       def legal_notice_settings_tabs
         [{ name: 'legal_notice',
-           partial: 'redmine_legal_notes/legal_notice',
+           partial: 'legal_notes/legal_notice',
            label: :label_legal_notice },
          { name: 'data_privacy_policy',
-           partial: 'redmine_legal_notes/data_privacy_policy',
+           partial: 'legal_notes/data_privacy_policy',
            label: :label_data_privacy_policy }]
       end
     end

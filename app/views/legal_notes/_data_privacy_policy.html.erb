@@ -1,8 +1,7 @@
 <p>
   <em class="info"><%= l(:note_data_privacy_policy) %></em> 
   <%= text_area_tag 'settings[data_privacy_policy]', 
-    @settings[:data_privacy_policy] || @plugin.settings[:defaults][:data_privacy_policy], 
-      class: 'wiki-edit', rows: 20 %>
-		 
+    @settings.fetch(:data_privacy_policy, @plugin.settings[:default][:data_privacy_policy]), 
+      class: 'wiki-edit', rows: 20 %>	 
 </p>
 <%= wikitoolbar_for('settings_data_privacy_policy') %>
