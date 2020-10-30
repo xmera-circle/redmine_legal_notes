@@ -40,4 +40,8 @@ everything from scratch in order to register the new plugin.
 You should now be able to see the plugin list in Administration -> Plugins
 and configure the newly installed plugin.
 
-For doing so, click on configure right beside the plugin version number.
+For doing so, click on _configure_ right beside the plugin version number.
+
+Choose by clicking on the respective tab what you like to edit. Then, write your
+legal notes in the systems markup language and save them.
+

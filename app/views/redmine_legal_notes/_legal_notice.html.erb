@@ -1,0 +1,8 @@
+<p>
+  <em class="info"><%= l(:note_legal_notice) %></em> 
+  <%= text_area_tag 'settings[legal_notice]', 
+    @settings[:legal_notice] || @plugin.settings[:defaults][:legal_notice], 
+      class: 'wiki-edit', rows: 20 %>
+		 
+</p>
+<%= wikitoolbar_for('settings_legal_notice') %>

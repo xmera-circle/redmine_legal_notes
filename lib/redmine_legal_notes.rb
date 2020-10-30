@@ -32,7 +32,15 @@ module RedmineLegalNotes
   end
 
   def defaults
-    attr = []
+    attr = [legal_notice, data_privacy_policy]
     attr.inject(&:merge)
+  end
+
+  def legal_notice
+    { legal_notice: '' }
+  end
+
+  def data_privacy_policy
+    { data_privacy_policy: '' }
   end
 end
