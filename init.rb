@@ -34,6 +34,13 @@ Redmine::Plugin.register :redmine_legal_notes do
             default: RedmineLegalNotes.defaults
 end
 
+overrides_dir = 'app/overrides'
+Rails.application.paths[overrides_dir] ||= []
+dir = "#{Redmine::Plugin.directory}/redmine_legal_notes/#{overrides_dir}"
+unless Rails.application.paths[overrides_dir].include?(dir)
+  Rails.application.paths[overrides_dir] << dir
+end
+
 Rails.configuration.to_prepare do
   unless Redmine.included_modules.include?(RedmineLegalNotes::Helper)
     SettingsController.prepend(RedmineLegalNotes::Helper)
