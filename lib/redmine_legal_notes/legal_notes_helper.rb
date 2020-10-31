@@ -27,7 +27,7 @@ module RedmineLegalNotes
       base.helper LegalNotesHelper
     end
     ##
-    # Collection of helper methods for the plugin's settings 
+    # Collection of helper methods for the plugin's settings
     # view _redmine_legal_notes_settings.html.erb
     #
     module LegalNotesHelper

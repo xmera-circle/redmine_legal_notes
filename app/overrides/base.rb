@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Target is redmines app/views/layouts/base.html.erb file
 Deface::Override.new(
   virtual_path: 'layouts/base',
