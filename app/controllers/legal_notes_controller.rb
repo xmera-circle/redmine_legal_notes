@@ -10,6 +10,7 @@ class LegalNotesController < ApplicationController
 
   def index
     if @legal_note.present?
+      pretty_name
       respond_to do |format|
         format.html { render :index }
       end
@@ -28,5 +29,9 @@ class LegalNotesController < ApplicationController
 
   def name
     params[:name].to_sym
+  end
+
+  def pretty_name
+    @pretty_name = name.to_s.titleize
   end
 end
