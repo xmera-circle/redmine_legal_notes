@@ -5,7 +5,7 @@ require File.expand_path("#{File.dirname(__FILE__)}/../test_helper")
 class LegalNotesControllerTest < ActionDispatch::IntegrationTest
   setup do
     Setting.plugin_redmine_legal_notes = { legal_notice: 'Legal Notice',
-      data_privacy_policy: 'Data Privacy Policy' }
+      data_privacy_policy: '' }
   end
 
   teardown do
@@ -14,22 +14,20 @@ class LegalNotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    LegalNote.names.each do |name|
-      get legal_notes_url(name: name)
-      assert_response :success
-    end
+    get legal_notes_url(name: 'legal-notice')
+    assert_response :success
   end
 
   test 'should display html title' do
-    get legal_notes_url(name: :legal_notice)
+    get legal_notes_url(name: 'legal-notice')
     assert_select 'title', html_title('Legal Notice')
   end
 
   test 'should render text' do
-    get legal_notes_url(name: :legal_notice)
+    get legal_notes_url(name: 'legal-notice')
     assert_select 'p', 'Legal Notice'
-    get legal_notes_url(name: :data_privacy_policy)
-    assert_select 'p', 'Data Privacy Policy'
+    get legal_notes_url(name: 'data-privacy-policy')
+    assert_redirected_to home_path
   end
 
   private

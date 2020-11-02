@@ -28,10 +28,10 @@ class LegalNotesController < ApplicationController
   end
 
   def name
-    params[:name].to_sym
+    params[:name]
   end
 
   def pretty_name
-    @pretty_name = name.to_s.titleize
+    @pretty_name = name.titleize
   end
 end

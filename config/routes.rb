@@ -5,5 +5,5 @@
 
 resources :legal_notes,
           path: ':name',
-          legal_note: /#{LegalNote.names.join('|')}/,
+          constraints: { name: LegalNote.slugs.join('|') },
           only: :index
