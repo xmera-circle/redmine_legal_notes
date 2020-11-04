@@ -1,7 +1,7 @@
 <p>
   <em class="info"><%= l(:note_legal_notice) %></em> 
   <%= text_area_tag 'settings[legal_notice]', 
-      LegalNote.find(name: :legal_notice), 
+      LegalNote.find(name: 'legal-notice'), 
       class: 'wiki-edit', rows: 20 %>	 
 </p>
 <%= wikitoolbar_for('settings_legal_notice') %>
