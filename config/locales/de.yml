@@ -1,0 +1,6 @@
+# German strings go here for Rails i18n
+de:
+  label_legal_notice: 'Impressum'
+  label_data_privacy_policy: 'Datenschutzerklärung'
+  note_legal_notice: 'Bearbeiten Sie Ihr Impressum hier'
+  note_data_privacy_policy: 'Bearbeiten Sie Ihre Datenschutzerklärung hier'
