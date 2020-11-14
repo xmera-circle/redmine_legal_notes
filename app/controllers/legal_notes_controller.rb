@@ -5,6 +5,8 @@
 #
 class LegalNotesController < ApplicationController
   self.main_menu = false
+  # prevents login action to be filtered by check_if_login_required application scope filter
+  skip_before_action :check_if_login_required, :check_password_change
 
   before_action :find_legal_note, only: :index
 
@@ -15,7 +17,7 @@ class LegalNotesController < ApplicationController
         format.html { render :index }
       end
     else
-      redirect_to home_path
+     redirect_to home_path
     end
   end
 
