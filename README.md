@@ -1,47 +1,36 @@
 # Redmine Legal Notes
 
-> Provide legal notes about your Redmine service
+Provide legal notes about your Redmine service
 
-Redmine Legal Notes is a plugin for Redmine users legally bounded to display
-a legal notice or data privacy policy.
+![Redmine Plugin Version](https://img.shields.io/badge/Redmine_Plugin-v0.0.1-red) ![Redmine Version](https://img.shields.io/badge/Redmine-v4.x.x-blue) ![Language Support](https://img.shields.io/badge/Languages-en,_de-green) ![Version Stage](https://img.shields.io/badge/Stage-release-important)
 
-## Getting Started
+Redmine Legal Notes is a plugin which displays legal notice and data privacy
+policy on dedicated pages.
 
-This quick introduction shows you the most convenient way for trying out the
-plugin with your Redmine instance.
+---
 
-### Downloading the plugin directory from GitHub
+More information and screenshots can be found at [xmera Circle - the  community website of xmera](https://circle.xmera.de).
 
-```bash
-cd (REDMINE_ROOT_DIR)/plugins
-git clone https://github.com/xmera-circle/redmine_legal_notes.git
-```
+## Installation
 
-Navigate into the plugins directory.
+You need a running Redmine instance in order to install the plugin. If you need help with the installation, please refer to [Redmine.org](https://redmine.org).
 
-Download the latest development state as _redmine_legal_notes_ folder
-into your plugin directory.
+Instructions for the installation of this plugin can be found in the [official documentation wiki](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Documentation).
 
-### Restart Redmine
+## Changelog
 
-```bash
-cd (REDMINE_ROOT_DIR)/tmp
-touch restart.txt
+All notable changes to this plugin will be reported in the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) at xmera Circle.
 
-```
+## Licence
 
-Navigate into the tmp directoy.
+Copyright (C) 2020 Liane Hampe (<circle@xmera.de>), xmera.
 
-Touch restart.txt in order to force Redmine's web server to restart and loading
-everything from scratch in order to register the new plugin.
+This plugin program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
 
-## Initial Configuration
-
-You should now be able to see the plugin list in Administration -> Plugins
-and configure the newly installed plugin.
-
-For doing so, click on _configure_ right beside the plugin version number.
-
-Choose by clicking on the respective tab what you like to edit. Then, write your
-legal notes in the systems markup language and save them.
-
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+[GNU General Public License](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) for more details.
