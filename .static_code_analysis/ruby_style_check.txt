@@ -1,4 +1,4 @@
-Inspecting 10 files
-..........
+Inspecting 15 files
+...............
 
-10 files inspected, no offenses detected
+15 files inspected, no offenses detected
