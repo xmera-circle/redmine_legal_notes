@@ -60,6 +60,6 @@ class LegalNotesControllerTest < ActionDispatch::IntegrationTest
   attr_writer :legal_notice_title, :legal_notice_name
 
   def html_title
-    "#{self.legal_notice_title} - #{Setting.app_title}"
+    "#{legal_notice_title} - #{Setting.app_title}"
   end
 end

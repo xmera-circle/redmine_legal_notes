@@ -43,19 +43,26 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
 
   test 'should render legal notes if login is required' do
     with_settings login_required: '1' do
-      get_legal_notes('legal-notice')
+      show_legal_notes('legal-notice')
     end
   end
 
   test 'should render legal notes if login is not required' do
     with_settings login_required: '0' do
-      get_legal_notes('legal-notice')
+      show_legal_notes('legal-notice')
+    end
+  end
+
+  test 'should render legal notes only if it exists' do
+    with_settings login_required: '0' do
+      get '/'
+      assert_select '.legal-notes-link a', text: 'Impressum'
     end
   end
 
   private
 
-  def get_legal_notes(name)
+  def show_legal_notes(name)
     get "/#{name}"
     assert_response :success
     assert_select '.wiki.wiki-page', text: name.gsub('-', ' ').titleize
