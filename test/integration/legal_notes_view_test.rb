@@ -56,7 +56,7 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
   test 'should render legal notes only if it exists' do
     with_settings login_required: '0' do
       get '/'
-      assert_select '.legal-notes-link a', text: 'Impressum'
+      assert_select '.legal-notes-link a'
     end
   end
 
