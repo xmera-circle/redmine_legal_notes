@@ -32,6 +32,8 @@ class LegalNotesEditTest < ActionDispatch::IntegrationTest
   fixtures :users, :email_addresses, :roles
 
   test 'admin can edit legal notes' do
+    Redmine::Plugin.register :redmine_legal_notes unless Redmine::Plugin.installed? :redmine_legal_notes
+
     log_user('admin', 'admin')
     get '/settings/plugin/redmine_legal_notes'
     assert_response :success
