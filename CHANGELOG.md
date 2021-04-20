@@ -2,6 +2,12 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
+## 0.0.5 - unreleased
+
+### Changed
+
+* deface origin hash of add-legal-notes-to-footer-content
+
 ## 0.0.4 - 2021-04-08
 
 ### Changed
