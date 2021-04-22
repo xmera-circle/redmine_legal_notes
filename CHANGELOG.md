@@ -2,7 +2,7 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
-## 0.0.5 - unreleased
+## 0.0.5 - 2021-04-20
 
 ### Changed
 
@@ -20,3 +20,17 @@ Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-n
 ### Added
 
 * version specifier for gem deface which freezes its version to 1.6.2
+
+## 0.0.2 - 2021-01-18
+
+### Changed
+
+* legal notes link rendering in the footer to be conditional
+
+## 0.0.1 - 2020-11-21
+
+### Added
+
+* text areas with wiki toolbar for editing legal notes and data privacy policy
+* rendering of legal notes as fullscreen pages
+* links for each page below Redmine credits in the footer
