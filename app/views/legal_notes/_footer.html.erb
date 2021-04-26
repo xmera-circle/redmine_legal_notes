@@ -1,5 +1,5 @@
 <div id="footer">
-    <div class="credits">Powered by <%= link_to Redmine::Info.app_name, Redmine::Info.url %> &copy; 2006-2020 Jean-Philippe Lang</div>
+    <div class="credits">Powered by <%= link_to Redmine::Info.app_name, Redmine::Info.url %> &copy; 2006-2021 Jean-Philippe Lang</div>
     <div class="legal-notes-link"> 
       <%= link_to l(:label_legal_notice), legal_notes_path(name: 'legal-notice') if LegalNote.find(name: 'legal-notice').present? %>
       <% if LegalNote.find(name: 'data-privacy-policy').present? %>

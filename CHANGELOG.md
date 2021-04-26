@@ -2,6 +2,12 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
+## unreleased
+
+### Changed
+
+* credits year in the footer partial
+
 ## 0.0.5 - 2021-04-20
 
 ### Changed
