@@ -4,3 +4,8 @@ en:
   label_data_privacy_policy: 'Data Privacy Policy'
   note_legal_notice: 'Edit your legal notice for this website here'
   note_data_privacy_policy: 'Edit your data privacy policy for this website here'
+  note_user_privacy_consent: 'You can insert a relative link to your data 
+    privacy policy: /data-privacy-policy'
+  label_privacy_consent_text: Consent form text
+  label_data_privacy_policy_text: Data privacy policy
+  field_privacy_consent: Consent form

@@ -1,7 +1,52 @@
-<p>
-  <em class="info"><%= l(:note_data_privacy_policy) %></em> 
-  <%= text_area_tag 'settings[data_privacy_policy]', 
-      LegalNote.find(name: 'data-privacy-policy'), 
-      class: 'wiki-edit', rows: 20 %>	 
-</p>
+<%
+# frozen_string_literal: true
+
+# This file is part of the Plugin Redmine Legal Notes.
+#
+# Copyright (C) 2020-2021 Liane Hampe <liaham@xmera.de>, xmera.
+#
+# This plugin program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+%>
+
+<%=tag.fieldset do %>
+  <%=tag.legend l(:label_privacy_consent_text) %>
+  <%=tag.p do %>
+    <%= check_box_tag 'settings[enable_privacy_consent]',true,
+        @settings['enable_privacy_consent'] %>
+    <%= tag.span 'Aktiviere die Einverständniserklärung' %>
+  <% end %>
+  <%=tag.p do %>
+  <%= text_field_tag 'settings[privacy_consent_text]', 
+      @settings['privacy_consent_text'], 
+      class: 'wiki-edit', size: 100 %>
+      <%=tag.em class: 'info' do %>
+        <%= l(:note_user_privacy_consent) %>
+      <% end %> 
+  <% end %>
+  <%= wikitoolbar_for('settings_privacy_consent_text') %>
+<% end %>
+
+<%=tag.fieldset do %>
+  <%=tag.legend l(:label_data_privacy_policy_text) %>
+  <%=tag.p do %>
+    <%=tag.em class: 'info' do %>
+      <%= l(:note_data_privacy_policy) %>
+    <% end %>
+    <%= text_area_tag 'settings[data_privacy_policy]', 
+        LegalNote.find(name: 'data-privacy-policy'), 
+        class: 'wiki-edit', rows: 20 %>	 
+  <% end %>
 <%= wikitoolbar_for('settings_data_privacy_policy') %>
+<% end %>

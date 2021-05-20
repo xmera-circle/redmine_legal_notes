@@ -32,8 +32,10 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
   fixtures :users, :email_addresses, :roles
 
   setup do
-    Setting.plugin_redmine_legal_notes = { legal_notice: 'Legal Notice',
-                                           data_privacy_policy: '' }
+    Setting.plugin_redmine_legal_notes = { legal_notice: '',
+                                           data_privacy_policy: 'Data Privacy Policy',
+                                           enable_privacy_consent: 'true',
+                                           privacy_consent_text: 'I agree' }
   end
 
   teardown do
@@ -43,13 +45,13 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
 
   test 'should render legal notes if login is required' do
     with_settings login_required: '1' do
-      show_legal_notes('legal-notice')
+      show_legal_notes('data-privacy-policy')
     end
   end
 
   test 'should render legal notes if login is not required' do
     with_settings login_required: '0' do
-      show_legal_notes('legal-notice')
+      show_legal_notes('data-privacy-policy')
     end
   end
 
@@ -58,6 +60,36 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
       get '/'
       assert_select '.legal-notes-link a'
     end
+  end
+
+  test 'should render privacy consent form on register page if enabled' do
+    #skip 'Test does not work!'
+    with_settings self_registration: 2 do
+      get register_path
+      assert_response :success
+      assert_select '#user_privacy_consent'
+    end
+  end
+
+  test 'should not render privacy consent form on register page if not enabled' do
+    Setting.clear_cache
+    Setting.plugin_redmine_legal_notes = { legal_notice: '',
+                                           data_privacy_policy: 'Data Privacy Policy',
+                                           privacy_consent_text: 'I agree' }
+    get register_path
+    assert :success
+    assert_select '#user_privacy_consent', 0
+  end
+
+  test 'should not render privacy consent form on register page if not policy exists' do
+    Setting.clear_cache
+    Setting.plugin_redmine_legal_notes = { legal_notice: '',
+                                           data_privacy_policy: '',
+                                           enable_privacy_consent: 'true',
+                                           privacy_consent_text: 'I agree' }
+    get register_path
+    assert :success
+    assert_select '#user_privacy_consent', 0
   end
 
   private

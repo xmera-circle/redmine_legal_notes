@@ -3,7 +3,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2021 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2021 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,4 +20,20 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 %>
 
-<%= stylesheet_link_tag 'legal_notes', plugin: 'redmine_legal_notes' %>
+<% if Setting.plugin_redmine_legal_notes[:enable_privacy_consent] && LegalNote.find(name: 'data-privacy-policy').present? %>
+</fieldset>
+
+<%=tag.fieldset class:'box' do %>
+  <%=tag.legend l(:label_data_privacy_policy) unless controller_name == 'account'%>
+  <%=tag.p do %>
+    <%= fields_for @user do |form| %>
+      <%= form.check_box :privacy_consent, { disabled: controller_name == 'users' }  %>
+      <%= tag.span ' *', class: 'required' %>
+      <%=tag.label for: 'user_privacy_consent' do %>
+        <% text = textilizable(Setting.plugin_redmine_legal_notes['privacy_consent_text']) %>
+        <%= sanitize text, tags: %w(strong em a), attributes: %w(href) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+<% end %>

@@ -18,28 +18,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-module RedmineLegalNotes
-  ##
-  # Override Module#prepended to inject the LegalNotesHelper module
-  #
-  module Helper
-    def self.prepended(base)
-      base.helper LegalNotesHelper
-    end
+class AddPrivacyConsentToUsers < ActiveRecord::Migration[5.2]
+  def self.up
+    add_column :users, :privacy_consent, :boolean, default: false
+  end
 
-    ##
-    # Collection of helper methods for the plugin's settings
-    # view _redmine_legal_notes_settings.html.erb
-    #
-    module LegalNotesHelper
-      def legal_notice_settings_tabs
-        [{ name: 'legal_notice',
-           partial: 'legal_notes/legal_notice',
-           label: :label_legal_notice },
-         { name: 'data_privacy_policy',
-           partial: 'legal_notes/data_privacy_policy',
-           label: :label_data_privacy_policy }]
-      end
-    end
+  def self.down
+    remove_column :users, :privacy_consent
   end
 end

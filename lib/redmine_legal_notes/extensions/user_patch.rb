@@ -1,9 +1,8 @@
-<%
 # frozen_string_literal: true
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2021 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2021 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,6 +17,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-%>
 
-<%= stylesheet_link_tag 'legal_notes', plugin: 'redmine_legal_notes' %>
+module RedmineLegalNotes
+  module Extensions
+    module UserPatch 
+      def self.included(base)
+        base.class_eval do
+          safe_attributes :privacy_consent
+          validates_presence_of :privacy_consent, if: -> { Setting.plugin_redmine_legal_notes[:enable_privacy_consent] }
+        end
+      end
+    end
+  end
+end
+
+# Apply patch
+Rails.configuration.to_prepare do
+  unless User.included_modules.include?(RedmineLegalNotes::Extensions::UserPatch)
+    User.include(RedmineLegalNotes::Extensions::UserPatch)
+  end
+end

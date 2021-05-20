@@ -18,31 +18,41 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-require 'redmine_legal_notes/extensions/user_patch'
-require 'redmine_legal_notes/helpers/legal_notes_helper'
-require 'redmine_legal_notes/hooks/views'
-
-##
-# Set up for the plugin's setting section to be integrated in the
-# registration process in init.rb.
-#
 module RedmineLegalNotes
-  module_function
+  module Hooks
+    ##
+    # Implement some view hooks
+    #
+    class Views < Redmine::Hook::ViewListener
 
-  def partial
-    'settings/redmine_legal_notes_settings'
-  end
+      ##
+      # Inject custom css for the footer into head
+      #
+      render_on :view_layouts_base_html_head,
+                partial: 'legal_notes/base_html_head'
 
-  def defaults
-    attr = [legal_notice, data_privacy_policy]
-    attr.inject(&:merge)
-  end
+      ##
+      # Render privacy consent in users/_form.html.erb
+      #
+      def view_users_form(context = {})
+        render_privacy_consent(context)
+      end
 
-  def legal_notice
-    { legal_notice: '' }
-  end
+      ##
+      # Render privacy consent in may/account.html.erb
+      #
+      def view_my_account(context = {})
+        render_privacy_consent(context)
+      end
 
-  def data_privacy_policy
-    { data_privacy_policy: '' }
+      private
+
+      def render_privacy_consent(context)
+        context[:controller].send :render_to_string, {
+          partial: 'account/privacy_consent',
+          locals: { user: context[:user], f: context[:form] }
+        }
+      end
+    end
   end
 end

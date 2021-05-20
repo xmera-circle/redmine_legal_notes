@@ -2,6 +2,12 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
+## 0.1.0 - 2021-05-20
+
+### Added
+
+* optional data privacy consent on registration and user account
+
 ## 0.0.6 - 2021-04-26
 
 ### Changed
