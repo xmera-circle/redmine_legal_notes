@@ -2,6 +2,12 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
+## 0.1.1 - 2021-05-29
+
+### Deleted
+
+* Gemfile in favour of redmine_base_deface
+
 ## 0.1.0 - 2021-05-20
 
 ### Added
