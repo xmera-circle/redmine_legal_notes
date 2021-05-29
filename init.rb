@@ -29,6 +29,7 @@ Redmine::Plugin.register :redmine_legal_notes do
   author_url 'http://xmera.de'
 
   requires_redmine version_or_higher: '4.1.0'
+  requires_redmine_plugin :redmine_base_deface, version_or_higher: '1.8.1'
 
   settings  partial: RedmineLegalNotes.partial,
             default: RedmineLegalNotes.defaults
