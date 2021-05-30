@@ -25,5 +25,6 @@ Deface::Override.new(
   replace: '#footer',
   partial: 'legal_notes/footer',
   original: 'a792e18b9fe20c73572a7bf7684df03c353df976',
+  sequence: '1',
   namespaced: true
 )
