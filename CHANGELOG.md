@@ -2,6 +2,12 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
+## 0.1.2 - 2021-05-30
+
+### Changed
+
+* loading order of deface overrides
+
 ## 0.1.1 - 2021-05-29
 
 ### Deleted
