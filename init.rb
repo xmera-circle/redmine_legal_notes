@@ -24,21 +24,16 @@ Redmine::Plugin.register :redmine_legal_notes do
   name 'Redmine Legal Notes Plugin'
   author 'Liane Hampe, xmera'
   description 'Dedicated pages for data privacy policy and legal notice'
-  version '0.1.2'
+  version '0.1.3'
   url 'https://circle.xmera.de/projects/redmine-legal-notes'
   author_url 'http://xmera.de'
 
   requires_redmine version_or_higher: '4.1.0'
-  requires_redmine_plugin :redmine_base_deface, version_or_higher: '1.8.1'
+  requires_redmine_plugin :redmine_base_deface, version_or_higher: '1.6.2'
 
   settings  partial: RedmineLegalNotes.partial,
             default: RedmineLegalNotes.defaults
 end
-
-overrides_dir = 'app/overrides'
-Rails.application.paths[overrides_dir] ||= []
-dir = "#{Redmine::Plugin.directory}/redmine_legal_notes/#{overrides_dir}"
-Rails.application.paths[overrides_dir] << dir unless Rails.application.paths[overrides_dir].include?(dir)
 
 Rails.configuration.to_prepare do
   unless Redmine.included_modules.include?(RedmineLegalNotes::Helpers)

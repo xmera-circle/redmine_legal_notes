@@ -2,6 +2,17 @@
 
 Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-notes/wiki/Changelog) of the plugins project page.
 
+## 0.1.3 - 2021-07-02
+
+### Changed
+
+* required version of redmine_base_deface to 1.6.2 due to some incompatabilities 
+  with Redmine and Rails 5.2
+
+### Added
+
+* missing translations (:en)
+
 ## 0.1.2 - 2021-05-30
 
 ### Changed
@@ -12,7 +23,7 @@ Please refer to the [changelog](https://circle.xmera.de/projects/redmine-legal-n
 
 ### Deleted
 
-* Gemfile in favour of redmine_base_deface
+* Gemfile in favour of redmine_base_deface 1.8.1
 
 ## 0.1.0 - 2021-05-20
 

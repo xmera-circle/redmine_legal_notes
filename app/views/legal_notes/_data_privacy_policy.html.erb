@@ -25,7 +25,7 @@
   <%=tag.p do %>
     <%= check_box_tag 'settings[enable_privacy_consent]',true,
         @settings['enable_privacy_consent'] %>
-    <%= tag.span 'Aktiviere die Einverständniserklärung' %>
+    <%= tag.span l(:label_enable_privacy_consent) %>
   <% end %>
   <%=tag.p do %>
   <%= text_field_tag 'settings[privacy_consent_text]', 

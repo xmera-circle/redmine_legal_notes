@@ -9,3 +9,4 @@ en:
   label_privacy_consent_text: Consent form text
   label_data_privacy_policy_text: Data privacy policy
   field_privacy_consent: Consent form
+  label_enable_privacy_consent: Enable privacy consent

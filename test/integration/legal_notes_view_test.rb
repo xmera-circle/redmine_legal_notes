@@ -63,7 +63,6 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
   end
 
   test 'should render privacy consent form on register page if enabled' do
-    #skip 'Test does not work!'
     with_settings self_registration: 2 do
       get register_path
       assert_response :success
