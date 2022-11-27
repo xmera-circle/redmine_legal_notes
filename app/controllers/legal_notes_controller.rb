@@ -48,7 +48,7 @@ class LegalNotesController < ApplicationController
   end
 
   def name
-    params[:name]
+    LegalNote.slugs.join('|').include?(params[:name]) ? params[:name] : nil
   end
 
   def pretty_name

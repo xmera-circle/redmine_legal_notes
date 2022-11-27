@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-require_dependency 'redmine_legal_notes'
+require File.expand_path('lib/redmine_legal_notes', __dir__)
 
 Redmine::Plugin.register :redmine_legal_notes do
   name 'Redmine Legal Notes Plugin'
@@ -35,8 +35,8 @@ Redmine::Plugin.register :redmine_legal_notes do
             default: RedmineLegalNotes.defaults
 end
 
-Rails.configuration.to_prepare do
-  unless Redmine.included_modules.include?(RedmineLegalNotes::Helpers)
-    SettingsController.prepend(RedmineLegalNotes::Helpers)
+if Rails.version < '6'
+  Rails.configuration.to_prepare do
+    RedmineLegalNotes.load_patches(SettingsController, RedmineLegalNotes::Helpers)
   end
 end

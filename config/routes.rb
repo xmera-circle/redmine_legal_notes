@@ -21,7 +21,14 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 
-resources :legal_notes,
-          path: ':name',
-          constraints: { name: LegalNote.slugs.join('|') },
-          only: :index
+if Rails.version < '6'
+  resources :legal_notes,
+            path: ':name',
+            constraints: { name: LegalNote.slugs.join('|') },
+            only: :index
+else
+  get '/legal_notes',
+      constraints: { name: LegalNote.slugs.join('|') },
+      to: 'legal_notes#index',
+      as: :legal_notes
+end

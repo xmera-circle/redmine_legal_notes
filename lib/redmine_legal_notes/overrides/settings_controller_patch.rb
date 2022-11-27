@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2021 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,31 +18,30 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-require File.expand_path('../test_helper', __dir__)
-
 module RedmineLegalNotes
-  class UserPatchTest < ActiveSupport::TestCase
-    include RedmineLegalNotes::LoadFixtures
+  module Overrides
+    ##
+    # Override Module#prepended to inject the LegalNotesHelper module
+    #
+    module SettingsControllerPatch
+      def self.prepended(base)
+        base.helper LegalNotesHelper
+      end
 
-    fixtures :users, :email_addresses
-
-    def setup
-      Setting.plugin_redmine_legal_notes[:enable_privacy_consent] = nil
-      @user = User.find(2)
-    end
-
-    test 'should have privacy_consent as safe attribute' do
-      assert @user.safe_attribute? :privacy_consent
-    end
-
-    test 'should validate privacy_consent if enabled' do
-      Setting.plugin_redmine_legal_notes[:enable_privacy_consent] = 'true'
-      assert_not @user.valid?
-      assert_equal %i[privacy_consent], @user.errors.attribute_names
-    end
-
-    test 'should not validate privacy_consent if not enabled' do
-      assert @user.valid?
+      ##
+      # Collection of helper methods for
+      # plugin/_redmine_legal_notes_settings.html.erb
+      #
+      module LegalNotesHelper
+        def legal_notice_settings_tabs
+          [{ name: 'legal_notice',
+             partial: 'legal_notes/legal_notice',
+             label: :label_legal_notice },
+           { name: 'data_privacy_policy',
+             partial: 'legal_notes/data_privacy_policy',
+             label: :label_data_privacy_policy }]
+        end
+      end
     end
   end
 end

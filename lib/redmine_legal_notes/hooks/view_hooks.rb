@@ -19,26 +19,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 module RedmineLegalNotes
-  ##
-  # Override Module#prepended to inject the LegalNotesHelper module
-  #
-  module Helpers
-    def self.prepended(base)
-      base.helper LegalNotesHelper
-    end
-
+  module Hooks
     ##
-    # Collection of helper methods for
-    # plugin/_redmine_legal_notes_settings.html.erb
+    # Implement some view hooks
     #
-    module LegalNotesHelper
-      def legal_notice_settings_tabs
-        [{ name: 'legal_notice',
-           partial: 'legal_notes/legal_notice',
-           label: :label_legal_notice },
-         { name: 'data_privacy_policy',
-           partial: 'legal_notes/data_privacy_policy',
-           label: :label_data_privacy_policy }]
+    class ViewHooks < Redmine::Hook::ViewListener
+      ##
+      # Inject custom css for the footer into head
+      #
+      render_on :view_layouts_base_html_head,
+                partial: 'legal_notes/base_html_head'
+
+      ##
+      # Render privacy consent in users/_form.html.erb
+      #
+      def view_users_form(context = {})
+        render_privacy_consent(context)
+      end
+
+      ##
+      # Render privacy consent in may/account.html.erb
+      #
+      def view_my_account(context = {})
+        render_privacy_consent(context)
+      end
+
+      private
+
+      def render_privacy_consent(context)
+        context[:controller].send :render_to_string, {
+          partial: 'account/privacy_consent',
+          locals: { user: context[:user], f: context[:form] }
+        }
       end
     end
   end

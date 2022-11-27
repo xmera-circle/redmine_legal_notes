@@ -19,4 +19,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 # Load the Redmine helper
-require File.expand_path("#{File.dirname(__FILE__)}/../../../test/test_helper")
+require File.expand_path('../../../test/test_helper', __dir__)
+# Others
+require_relative File.expand_path('load_fixtures', __dir__)
+require_relative File.expand_path('authenticate_user', __dir__)

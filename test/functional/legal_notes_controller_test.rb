@@ -39,19 +39,19 @@ class LegalNotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get legal_notes_url(name: legal_notice_name)
+    get legal_notes_path(name: legal_notice_name)
     assert_response :success
   end
 
   test 'should display html title' do
-    get legal_notes_url(name: legal_notice_name)
+    get legal_notes_path(name: legal_notice_name)
     assert_select 'title', html_title
   end
 
   test 'should render text' do
-    get legal_notes_url(name: legal_notice_name)
+    get legal_notes_path(name: legal_notice_name)
     assert_select 'p', legal_notice_title
-    get legal_notes_url(name: 'data-privacy-policy')
+    get legal_notes_path(name: 'data-privacy-policy')
     assert_redirected_to home_path
   end
 

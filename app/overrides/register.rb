@@ -24,6 +24,6 @@ Deface::Override.new(
   name: 'add-privacy-consent-to-bottom',
   insert_after: '.box.tabular',
   partial: 'account/privacy_consent',
-  original: '',
+  original: 'a9c303821376a8d83cba32654629d71cc3926a1d',
   namespaced: true
 )
