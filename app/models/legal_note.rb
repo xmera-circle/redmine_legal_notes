@@ -39,7 +39,7 @@ class LegalNote
     private
 
     def to_slug(name)
-      name.to_s.gsub('_', '-')
+      name.to_s.tr('_', '-')
     end
 
     ##
@@ -55,11 +55,11 @@ class LegalNote
     end
 
     def setting
-      Setting.send('plugin_redmine_legal_notes')
+      Setting.send(:plugin_redmine_legal_notes)
     end
 
     def to_key(name)
-      name.to_s.gsub('-', '_').to_sym
+      name.to_s.tr('-', '_').to_sym
     end
 
     def default_for(name)
