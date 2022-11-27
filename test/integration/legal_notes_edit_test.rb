@@ -19,8 +19,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 require File.expand_path("#{File.dirname(__FILE__)}/../test_helper")
-require File.expand_path("#{File.dirname(__FILE__)}/../authenticate_user")
-require File.expand_path("#{File.dirname(__FILE__)}/../load_fixtures")
 
 ##
 # The plugins setting page should be accessable.

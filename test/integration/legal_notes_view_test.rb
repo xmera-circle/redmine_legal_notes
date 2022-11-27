@@ -19,8 +19,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 require File.expand_path("#{File.dirname(__FILE__)}/../test_helper")
-require File.expand_path("#{File.dirname(__FILE__)}/../authenticate_user")
-require File.expand_path("#{File.dirname(__FILE__)}/../load_fixtures")
 
 ##
 # Make sure legal notes are rendered properly.
@@ -94,7 +92,7 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
   private
 
   def show_legal_notes(name)
-    get "/#{name}"
+    get legal_notes_path(name: name)
     assert_response :success
     assert_select '.wiki.wiki-page', text: name.gsub('-', ' ').titleize
   end

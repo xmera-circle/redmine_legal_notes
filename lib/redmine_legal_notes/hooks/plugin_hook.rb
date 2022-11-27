@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2022 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,37 +21,13 @@
 module RedmineLegalNotes
   module Hooks
     ##
-    # Implement some view hooks
+    # Load Redmine core patches after all plugins are loaded.
     #
-    class Views < Redmine::Hook::ViewListener
+    class PluginHook < Redmine::Hook::Listener
+      def after_plugins_loaded(_context = {})
+        return if Rails.version < '6.0'
 
-      ##
-      # Inject custom css for the footer into head
-      #
-      render_on :view_layouts_base_html_head,
-                partial: 'legal_notes/base_html_head'
-
-      ##
-      # Render privacy consent in users/_form.html.erb
-      #
-      def view_users_form(context = {})
-        render_privacy_consent(context)
-      end
-
-      ##
-      # Render privacy consent in may/account.html.erb
-      #
-      def view_my_account(context = {})
-        render_privacy_consent(context)
-      end
-
-      private
-
-      def render_privacy_consent(context)
-        context[:controller].send :render_to_string, {
-          partial: 'account/privacy_consent',
-          locals: { user: context[:user], f: context[:form] }
-        }
+        RedmineLegalNotes.setup
       end
     end
   end

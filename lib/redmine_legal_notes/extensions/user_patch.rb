@@ -20,7 +20,10 @@
 
 module RedmineLegalNotes
   module Extensions
-    module UserPatch 
+    ##
+    # Extends User attributes with the privacy_consent field which is
+    # required for registration.
+    module UserPatch
       def self.included(base)
         base.class_eval do
           safe_attributes :privacy_consent
@@ -28,12 +31,5 @@ module RedmineLegalNotes
         end
       end
     end
-  end
-end
-
-# Apply patch
-Rails.configuration.to_prepare do
-  unless User.included_modules.include?(RedmineLegalNotes::Extensions::UserPatch)
-    User.include(RedmineLegalNotes::Extensions::UserPatch)
   end
 end
