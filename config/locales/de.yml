@@ -5,8 +5,21 @@ de:
   note_legal_notice: 'Bearbeiten Sie Ihr Impressum hier'
   note_data_privacy_policy: 'Bearbeiten Sie Ihre Datenschutzerklärung hier'
   note_user_privacy_consent: 'Den Link zu Ihrer Datenschutzerklärung können Sie 
-    als relativen Link einfügen: /data-privacy-policy'
+    als relativen Link einfügen: /data-privacy-policy. Wenn Sie auf eine externe 
+    Datenschutzerklärung verweisen möchten, geben Sie die vollständige Adresse an.'
   label_privacy_consent_text: Einverständniserklärung
   label_data_privacy_policy_text: Datenschutzerklärung
   field_privacy_consent: Einverständniserklärung
   label_enable_privacy_consent: Aktiviere die Einverständniserklärung
+  label_legal_notice_text: Impressum
+  label_legal_notice_link_text: Externes Impressum
+  note_legal_notice_link: 'Geben Sie alternativ einen Link zu einem externen 
+    Impressum an.'
+  label_data_privacy_policy_link_text: Externe Datenschutzerklärung
+  note_data_privacy_policy_link: 'Geben Sie alternativ einen Link zu einer externen 
+    Datenschutzerklärung an.'
+  note_user_privacy_consent_rails_6 : 'Den Link zu Ihrer Datenschutzerklärung 
+    können Sie als relativen Link einfügen: /legal_notes?name=data-privacy-policy. 
+    Wenn Sie auf eine externe Datenschutzerklärung verweisen möchten, geben Sie
+    die vollständige Adresse an.'
+  

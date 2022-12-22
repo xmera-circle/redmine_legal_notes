@@ -5,8 +5,20 @@ en:
   note_legal_notice: 'Edit your legal notice for this website here'
   note_data_privacy_policy: 'Edit your data privacy policy for this website here'
   note_user_privacy_consent: 'You can insert a relative link to your data 
-    privacy policy: /data-privacy-policy'
+    privacy policy: /data-privacy-policy. When you like to referece an external 
+    data privacy policy then you need to enter a full link.'
   label_privacy_consent_text: Consent form text
   label_data_privacy_policy_text: Data privacy policy
   field_privacy_consent: Consent form
   label_enable_privacy_consent: Enable privacy consent
+  label_legal_notice_text: Legal Notice
+  label_legal_notice_link_text: External legal notice
+  note_legal_notice_link: 'Alternatively, you can add a link to an external legal
+    notice.'
+  label_data_privacy_policy_link_text: External privacy policy
+  note_data_privacy_policy_link: 'Alternatively, you can add a link to an external
+    data privacy policy.'
+  note_user_privacy_consent_rails_6 : 'You can insert a relative link to your data 
+    privacy policy: /data-privacy-policy: /legal_notes?name=data-privacy-policy. 
+    When you like to referece an external data privacy policy then you need to
+    enter a full link.' 

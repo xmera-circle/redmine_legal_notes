@@ -78,7 +78,7 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
     assert_select '#user_privacy_consent', 0
   end
 
-  test 'should not render privacy consent form on register page if not policy exists' do
+  test 'should not render privacy consent form on register page if no policy exists' do
     Setting.clear_cache
     Setting.plugin_redmine_legal_notes = { legal_notice: '',
                                            data_privacy_policy: '',
