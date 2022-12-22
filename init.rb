@@ -26,7 +26,7 @@ Redmine::Plugin.register :redmine_legal_notes do
   description 'Dedicated pages for data privacy policy and legal notice'
   version '0.1.4'
   url 'https://circle.xmera.de/projects/redmine-legal-notes'
-  author_url 'http://xmera.de'
+  author_url 'https://xmera.de'
 
   requires_redmine version_or_higher: '4.1.0'
   requires_redmine_plugin :redmine_base_deface, version_or_higher: '1.6.2'
@@ -35,8 +35,4 @@ Redmine::Plugin.register :redmine_legal_notes do
             default: RedmineLegalNotes.defaults
 end
 
-if Rails.version < '6'
-  Rails.configuration.to_prepare do
-    RedmineLegalNotes.load_patches(SettingsController, RedmineLegalNotes::Helpers)
-  end
-end
+RedmineLegalNotes.setup

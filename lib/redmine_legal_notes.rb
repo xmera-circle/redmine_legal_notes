@@ -20,7 +20,6 @@
 
 require_relative 'redmine_legal_notes/extensions/user_patch'
 require_relative 'redmine_legal_notes/overrides/settings_controller_patch'
-require_relative 'redmine_legal_notes/hooks/plugin_hook'
 require_relative 'redmine_legal_notes/hooks/view_hooks'
 
 ##
@@ -28,14 +27,28 @@ require_relative 'redmine_legal_notes/hooks/view_hooks'
 # registration process in init.rb.
 #
 module RedmineLegalNotes
-  PATCHES = {
-    settings_controller: RedmineLegalNotes::Overrides::SettingsControllerPatch,
-    user: RedmineLegalNotes::Extensions::UserPatch
-  }.freeze
-
   class << self
     def setup
-      apply_patches
+      patches.each do |patch|
+        data = send("#{patch}_patch")
+        AdvancedPluginHelper::Patch.register(data)
+      end
+    end
+
+    def patches
+      %w[settings_controller user]
+    end
+
+    def settings_controller_patch
+      { klass: SettingsController,
+        patch: RedmineLegalNotes::Overrides::SettingsControllerPatch,
+        strategy: :prepend }
+    end
+
+    def user_patch
+      { klass: User,
+        patch: RedmineLegalNotes::Extensions::UserPatch,
+        strategy: :include }
     end
 
     def partial
@@ -53,41 +66,6 @@ module RedmineLegalNotes
 
     def data_privacy_policy
       { data_privacy_policy: '' }
-    end
-
-    def apply_patches
-      PATCHES.each_key do |key|
-        add_patches(classify(key), PATCHES[key]) if Rails.version >= '6.0'
-
-        prepare_patches(classify(key), PATCHES[key]) if Rails.version < '6.0'
-      end
-    end
-
-    private
-
-    def classify(key)
-      key.to_s.classify.constantize
-    end
-
-    def prepare_patches(klass, patch)
-      Rails.configuration.to_prepare do
-        RedmineProalphaIntegration.send :add_patches, klass, patch
-      end
-    end
-
-    def add_patches(klass, patch)
-      return if klass.included_modules.include?(patch)
-
-      klass.include(patch) if extensions?(patch)
-      klass.prepend(patch) if overrides?(patch)
-    end
-
-    def overrides?(patch)
-      patch.to_s.split('::').include? 'Overrides'
-    end
-
-    def extensions?(patch)
-      patch.to_s.split('::').include? 'Extensions'
     end
   end
 end
