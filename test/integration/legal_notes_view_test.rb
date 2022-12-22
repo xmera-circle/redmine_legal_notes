@@ -94,6 +94,6 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
   def show_legal_notes(name)
     get legal_notes_path(name: name)
     assert_response :success
-    assert_select '.wiki.wiki-page', text: name.gsub('-', ' ').titleize
+    assert_select '.wiki.wiki-page', text: name.tr('-', ' ').titleize
   end
 end
