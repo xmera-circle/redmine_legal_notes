@@ -29,7 +29,7 @@ require_relative 'redmine_legal_notes/hooks/view_hooks'
 module RedmineLegalNotes
   class << self
     def setup
-      AdvancedPluginHelper::BasePresenter.register(LegalNotePresenter, LegalNote)
+      AdvancedPluginHelper::Presenter.register(LegalNotePresenter, LegalNote)
       patches.each do |patch|
         data = send("#{patch}_patch")
         AdvancedPluginHelper::Patch.register(data)
