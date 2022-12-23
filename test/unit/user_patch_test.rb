@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2021 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2021-2022 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ module RedmineLegalNotes
     test 'should validate privacy_consent if enabled' do
       Setting.plugin_redmine_legal_notes[:enable_privacy_consent] = 'true'
       assert_not @user.valid?
-      assert_equal %i[privacy_consent], @user.errors.keys
+      assert_equal %i[privacy_consent], @user.errors.attribute_names
     end
 
     test 'should not validate privacy_consent if not enabled' do

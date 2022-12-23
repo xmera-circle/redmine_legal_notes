@@ -22,11 +22,13 @@
 # Interface for LegalNote business
 #
 class LegalNote
+  include Redmine::I18n
+
+  delegate_missing_to :class
+
   class << self
     def find(name:)
-      return content_of(name) if valid? name
-
-      raise ActiveRecord::RecordNotFound
+      content_of(name) if valid? name
     end
 
     ##
@@ -36,10 +38,18 @@ class LegalNote
       names.collect { |name| to_slug(name) }
     end
 
+    def user_privacy_consent_note
+      Rails.version < '6.0' ? l(:note_user_privacy_consent) : l(:note_user_privacy_consent_rails_6)
+    end
+
     private
 
     def to_slug(name)
       name.to_s.tr('_', '-')
+    end
+
+    def external_links
+      %w[legal_notice_link data_privacy_policy_link]
     end
 
     ##
@@ -67,7 +77,7 @@ class LegalNote
     end
 
     def valid?(name)
-      slugs.include? name.to_s
+      (external_links | slugs).include? name.to_s
     end
   end
 end
