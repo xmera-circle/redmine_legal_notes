@@ -20,5 +20,4 @@ directories:
     InstanceVariableAssumption:
       enabled: false
 exclude_paths:
-- test/
-
+  - test
