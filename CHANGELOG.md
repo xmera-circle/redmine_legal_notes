@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.0 - unreleased
+
+### Added
+
+* Redmine 5 support
+* git hook scripts
+* advanced_plugin_helper as required plugin
+* possibility to enter links to external legal notes
+* SECURITY.md
+* GitHub issue templates
+
+### Changes
+
+* presenter registration to use the new API of advanced_plugin_helper
+* README.md
+
+### Fixes
+
+* rubocop offenses
 
 ## 0.1.4 - 2022-04-28
 
