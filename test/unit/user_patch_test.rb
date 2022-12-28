@@ -38,11 +38,19 @@ module RedmineLegalNotes
     test 'should validate privacy_consent if enabled' do
       Setting.plugin_redmine_legal_notes[:enable_privacy_consent] = 'true'
       assert_not @user.valid?
-      assert_equal %i[privacy_consent], @user.errors.attribute_names
+      assert_equal %i[privacy_consent], error_attributes
     end
 
     test 'should not validate privacy_consent if not enabled' do
       assert @user.valid?
+    end
+
+    private
+
+    def error_attributes
+      return @user.errors.attribute_names if Rails.version > '6'
+
+      @user.errors.keys
     end
   end
 end

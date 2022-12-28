@@ -19,8 +19,6 @@ directories:
   "app/models":
     InstanceVariableAssumption:
       enabled: false
-  "test/":
-    InstanceVariableAssumption:
-      enabled: false
-    IrresponsibleModule:
-      enabled: false
+exclude_paths:
+- test/
+

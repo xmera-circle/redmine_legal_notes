@@ -92,12 +92,18 @@ class LegalNotesFooterTest < ActionDispatch::IntegrationTest
                                            data_privacy_policy: 'Data Privacy Policy' }
     with_settings login_required: '0' do
       show_legal_notes_footer(2)
-      assert_select 'a[href=?]', '/legal_notes?name=legal-notice'
-      assert_select 'a[href=?]', '/legal_notes?name=data-privacy-policy'
+      assert_select 'a[href=?]', relative_link('legal-notice')
+      assert_select 'a[href=?]', relative_link('data-privacy-policy')
     end
   end
 
   private
+
+  def relative_link(page_name)
+    return "/legal_notes?name=#{page_name}" if Rails.version > '6'
+
+    "/#{page_name}"
+  end
 
   def show_legal_notes_footer(count)
     get home_path
