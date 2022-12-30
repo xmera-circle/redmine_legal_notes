@@ -22,7 +22,7 @@ require File.expand_path('lib/redmine_legal_notes', __dir__)
 
 Redmine::Plugin.register :redmine_legal_notes do
   name 'Redmine Legal Notes Plugin'
-  author 'Liane Hampe, xmera'
+  author 'Liane Hampe, xmera Solutions GmbH'
   description 'Dedicated pages for data privacy policy and legal notice'
   version '0.2.0'
   url 'https://circle.xmera.de/projects/redmine-legal-notes'
