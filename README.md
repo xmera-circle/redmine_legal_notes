@@ -50,7 +50,7 @@ All plugins in the selection are compatible with [Redmine](https://redmine.org) 
 More information about xmera Omnia can be found at [xmera](https://xmera.de).
 ## Support
 
-For any question on the usage of this plugin please use the [xmera Circle » Community Portal](https://circle.xmera.de). If you found a problem with the software, please create an issue on [xmera Circle](https://circle.xmera.de) or [GitHub](https://github.com/xmera-circle/advanced_plugin_helper).
+For any question on the usage of this plugin please use the [xmera Circle » Community Portal](https://circle.xmera.de). If you found a problem with the software, please create an issue on [xmera Circle](https://circle.xmera.de) or [GitHub](https://github.com/xmera-circle/redmine_legal_notes).
 
 If you are a xmera Solutions customer you may alternatively forward your issue to the xmera Service Customer Portal.
 
