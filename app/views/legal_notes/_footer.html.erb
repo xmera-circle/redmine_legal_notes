@@ -3,7 +3,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,9 +23,6 @@
 <div id="footer">
     <div class="credits">Powered by <%= link_to Redmine::Info.app_name, Redmine::Info.url %> &copy; 2006-2022 Jean-Philippe Lang</div>
     <div class="legal-notes-link"> 
-      <%= link_to l(:label_legal_notice), legal_notes_path(name: 'legal-notice') if LegalNote.find(name: 'legal-notice').present? %>
-      <% if LegalNote.find(name: 'data-privacy-policy').present? %>
-       | <%= link_to l(:label_data_privacy_policy), legal_notes_path(name: 'data-privacy-policy') %>
-      <% end %>
+      <%= show(LegalNote.new).link_to_legal_notes %>
     </div>
 </div>

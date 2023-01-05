@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,7 +21,14 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 
-resources :legal_notes,
-          path: ':name',
-          constraints: { name: LegalNote.slugs.join('|') },
-          only: :index
+if Rails.version < '6'
+  resources :legal_notes,
+            path: ':name',
+            constraints: { name: LegalNote.slugs.join('|') },
+            only: :index
+else
+  get '/legal_notes',
+      constraints: { name: LegalNote.slugs.join('|') },
+      to: 'legal_notes#index',
+      as: :legal_notes
+end

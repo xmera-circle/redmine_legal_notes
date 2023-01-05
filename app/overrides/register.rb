@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2021 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2021-2022 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -24,6 +24,6 @@ Deface::Override.new(
   name: 'add-privacy-consent-to-bottom',
   insert_after: '.box.tabular',
   partial: 'account/privacy_consent',
-  original: '',
+  original: 'a9c303821376a8d83cba32654629d71cc3926a1d',
   namespaced: true
 )

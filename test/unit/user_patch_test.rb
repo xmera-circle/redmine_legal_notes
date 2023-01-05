@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2021 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2021-2022 Liane Hampe <liaham@xmera.de>, xmera.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,10 +19,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 require File.expand_path('../test_helper', __dir__)
-require File.expand_path("#{File.dirname(__FILE__)}/../load_fixtures")
 
-module RedmineIssueSync
-  class SynchronisationTest < ActiveSupport::TestCase
+module RedmineLegalNotes
+  class UserPatchTest < ActiveSupport::TestCase
     include RedmineLegalNotes::LoadFixtures
 
     fixtures :users, :email_addresses
@@ -39,11 +38,19 @@ module RedmineIssueSync
     test 'should validate privacy_consent if enabled' do
       Setting.plugin_redmine_legal_notes[:enable_privacy_consent] = 'true'
       assert_not @user.valid?
-      assert_equal %i[privacy_consent], @user.errors.keys
+      assert_equal %i[privacy_consent], error_attributes
     end
 
     test 'should not validate privacy_consent if not enabled' do
       assert @user.valid?
+    end
+
+    private
+
+    def error_attributes
+      return @user.errors.attribute_names if Rails.version > '6'
+
+      @user.errors.keys
     end
   end
 end

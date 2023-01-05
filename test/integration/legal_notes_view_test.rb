@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,8 +19,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 require File.expand_path("#{File.dirname(__FILE__)}/../test_helper")
-require File.expand_path("#{File.dirname(__FILE__)}/../authenticate_user")
-require File.expand_path("#{File.dirname(__FILE__)}/../load_fixtures")
 
 ##
 # Make sure legal notes are rendered properly.
@@ -80,7 +78,7 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
     assert_select '#user_privacy_consent', 0
   end
 
-  test 'should not render privacy consent form on register page if not policy exists' do
+  test 'should not render privacy consent form on register page if no policy exists' do
     Setting.clear_cache
     Setting.plugin_redmine_legal_notes = { legal_notice: '',
                                            data_privacy_policy: '',
@@ -94,8 +92,8 @@ class LegalNotesViewTest < ActionDispatch::IntegrationTest
   private
 
   def show_legal_notes(name)
-    get "/#{name}"
+    get legal_notes_path(name: name)
     assert_response :success
-    assert_select '.wiki.wiki-page', text: name.gsub('-', ' ').titleize
+    assert_select '.wiki.wiki-page', text: name.tr('-', ' ').titleize
   end
 end

@@ -3,7 +3,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,7 +32,7 @@
       @settings['privacy_consent_text'], 
       class: 'wiki-edit', size: 100 %>
       <%=tag.em class: 'info' do %>
-        <%= l(:note_user_privacy_consent) %>
+        <%= LegalNote.user_privacy_consent_note %>
       <% end %> 
   <% end %>
   <%= wikitoolbar_for('settings_privacy_consent_text') %>
@@ -48,5 +48,16 @@
         LegalNote.find(name: 'data-privacy-policy'), 
         class: 'wiki-edit', rows: 20 %>	 
   <% end %>
-<%= wikitoolbar_for('settings_data_privacy_policy') %>
+  <%= wikitoolbar_for('settings_data_privacy_policy') %>
+<% end %>
+
+<%=tag.fieldset do %>
+  <%=tag.legend l(:label_data_privacy_policy_link_text) %>
+  <%=tag.p do %>
+    <%= text_field_tag 'settings[data_privacy_policy_link]', 
+      @settings['data_privacy_policy_link'], size: 100 %>
+    <%=tag.em class: 'info' do %>
+      <%= l(:note_data_privacy_policy_link) %>
+    <% end %> 
+  <% end %>
 <% end %>

@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,8 +23,7 @@ module RedmineLegalNotes
     ##
     # Implement some view hooks
     #
-    class Views < Redmine::Hook::ViewListener
-
+    class ViewHooks < Redmine::Hook::ViewListener
       ##
       # Inject custom css for the footer into head
       #

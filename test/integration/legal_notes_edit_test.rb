@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,8 +19,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 require File.expand_path("#{File.dirname(__FILE__)}/../test_helper")
-require File.expand_path("#{File.dirname(__FILE__)}/../authenticate_user")
-require File.expand_path("#{File.dirname(__FILE__)}/../load_fixtures")
 
 ##
 # The plugins setting page should be accessable.

@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,31 +18,55 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-require 'redmine_legal_notes/extensions/user_patch'
-require 'redmine_legal_notes/helpers/legal_notes_helper'
-require 'redmine_legal_notes/hooks/views'
+require_relative 'redmine_legal_notes/extensions/user_patch'
+require_relative 'redmine_legal_notes/overrides/settings_controller_patch'
+require_relative 'redmine_legal_notes/hooks/view_hooks'
 
 ##
 # Set up for the plugin's setting section to be integrated in the
 # registration process in init.rb.
 #
 module RedmineLegalNotes
-  module_function
+  class << self
+    def setup
+      AdvancedPluginHelper::Presenter.register(LegalNotePresenter, LegalNote)
+      patches.each do |patch|
+        data = send("#{patch}_patch")
+        AdvancedPluginHelper::Patch.register(data)
+      end
+    end
 
-  def partial
-    'settings/redmine_legal_notes_settings'
-  end
+    def patches
+      %w[settings_controller user]
+    end
 
-  def defaults
-    attr = [legal_notice, data_privacy_policy]
-    attr.inject(&:merge)
-  end
+    def settings_controller_patch
+      { klass: SettingsController,
+        patch: RedmineLegalNotes::Overrides::SettingsControllerPatch,
+        strategy: :prepend }
+    end
 
-  def legal_notice
-    { legal_notice: '' }
-  end
+    def user_patch
+      { klass: User,
+        patch: RedmineLegalNotes::Extensions::UserPatch,
+        strategy: :include }
+    end
 
-  def data_privacy_policy
-    { data_privacy_policy: '' }
+    def partial
+      'settings/redmine_legal_notes_settings'
+    end
+
+    def defaults
+      attr = [legal_notice, data_privacy_policy]
+      attr.inject(&:merge)
+    end
+
+    def legal_notice
+      { legal_notice: '' }
+    end
+
+    def data_privacy_policy
+      { data_privacy_policy: '' }
+    end
   end
 end

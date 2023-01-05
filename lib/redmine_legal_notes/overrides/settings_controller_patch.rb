@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,26 +19,28 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 module RedmineLegalNotes
-  ##
-  # Override Module#prepended to inject the LegalNotesHelper module
-  #
-  module Helpers
-    def self.prepended(base)
-      base.helper LegalNotesHelper
-    end
-
+  module Overrides
     ##
-    # Collection of helper methods for
-    # plugin/_redmine_legal_notes_settings.html.erb
+    # Override Module#prepended to inject the LegalNotesHelper module
     #
-    module LegalNotesHelper
-      def legal_notice_settings_tabs
-        [{ name: 'legal_notice',
-           partial: 'legal_notes/legal_notice',
-           label: :label_legal_notice },
-         { name: 'data_privacy_policy',
-           partial: 'legal_notes/data_privacy_policy',
-           label: :label_data_privacy_policy }]
+    module SettingsControllerPatch
+      def self.prepended(base)
+        base.helper LegalNotesHelper
+      end
+
+      ##
+      # Collection of helper methods for
+      # plugin/_redmine_legal_notes_settings.html.erb
+      #
+      module LegalNotesHelper
+        def legal_notice_settings_tabs
+          [{ name: 'legal_notice',
+             partial: 'legal_notes/legal_notice',
+             label: :label_legal_notice },
+           { name: 'data_privacy_policy',
+             partial: 'legal_notes/data_privacy_policy',
+             label: :label_data_privacy_policy }]
+        end
       end
     end
   end

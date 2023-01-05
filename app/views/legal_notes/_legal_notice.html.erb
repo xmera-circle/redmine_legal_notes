@@ -3,7 +3,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,11 +20,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 %>
 
+<%=tag.fieldset do %>
+  <%=tag.legend l(:label_legal_notice_text) %>
+  <%=tag.p do %>
+    <%=tag.em class: 'info' do %>
+      <%= l(:note_legal_notice) %>
+    <% end %>
+    <%= text_area_tag 'settings[legal_notice]', 
+        LegalNote.find(name: 'legal-notice'), 
+        class: 'wiki-edit', rows: 20 %>
+  <% end %>
+  <%= wikitoolbar_for('settings_legal_notice') %>
+<% end %>
 
-<p>
-  <em class="info"><%= l(:note_legal_notice) %></em> 
-  <%= text_area_tag 'settings[legal_notice]', 
-      LegalNote.find(name: 'legal-notice'), 
-      class: 'wiki-edit', rows: 20 %>	 
-</p>
-<%= wikitoolbar_for('settings_legal_notice') %>
+<%=tag.fieldset do %>
+  <%=tag.legend l(:label_legal_notice_link_text) %>
+  <%=tag.p do %>
+    <%= text_field_tag 'settings[legal_notice_link]', 
+      @settings['legal_notice_link'], size: 100 %>
+    <%=tag.em class: 'info' do %>
+      <%= l(:note_legal_notice_link) %>
+    <% end %> 
+  <% end %>
+<% end %>
