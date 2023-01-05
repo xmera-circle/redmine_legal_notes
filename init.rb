@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,9 +22,9 @@ require File.expand_path('lib/redmine_legal_notes', __dir__)
 
 Redmine::Plugin.register :redmine_legal_notes do
   name 'Redmine Legal Notes Plugin'
-  author 'Liane Hampe, xmera'
+  author 'Liane Hampe, xmera Solutions GmbH'
   description 'Dedicated pages for data privacy policy and legal notice'
-  version '0.1.4'
+  version '0.2.0'
   url 'https://circle.xmera.de/projects/redmine-legal-notes'
   author_url 'https://xmera.de'
 

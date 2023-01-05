@@ -2,7 +2,7 @@
 
 # This file is part of the Plugin Redmine Legal Notes.
 #
-# Copyright (C) 2020-2022 Liane Hampe <liaham@xmera.de>, xmera.
+# Copyright (C) 2020-2023 Liane Hampe <liaham@xmera.de>, xmera Solutions GmbH.
 #
 # This plugin program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -92,12 +92,18 @@ class LegalNotesFooterTest < ActionDispatch::IntegrationTest
                                            data_privacy_policy: 'Data Privacy Policy' }
     with_settings login_required: '0' do
       show_legal_notes_footer(2)
-      assert_select 'a[href=?]', '/legal_notes?name=legal-notice'
-      assert_select 'a[href=?]', '/legal_notes?name=data-privacy-policy'
+      assert_select 'a[href=?]', relative_link('legal-notice')
+      assert_select 'a[href=?]', relative_link('data-privacy-policy')
     end
   end
 
   private
+
+  def relative_link(page_name)
+    return "/legal_notes?name=#{page_name}" if Rails.version > '6'
+
+    "/#{page_name}"
+  end
 
   def show_legal_notes_footer(count)
     get home_path
