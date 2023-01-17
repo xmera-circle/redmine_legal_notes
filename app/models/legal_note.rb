@@ -39,7 +39,7 @@ class LegalNote
     end
 
     def user_privacy_consent_note
-      Rails.version < '6.0' ? l(:note_user_privacy_consent) : l(:note_user_privacy_consent_rails_6)
+      Rails.version < '6' ? l(:note_user_privacy_consent) : l(:note_user_privacy_consent_rails_6)
     end
 
     private
