@@ -24,7 +24,7 @@ Redmine::Plugin.register :redmine_legal_notes do
   name 'Redmine Legal Notes Plugin'
   author 'Liane Hampe, xmera Solutions GmbH'
   description 'Dedicated pages for data privacy policy and legal notice'
-  version '0.2.0'
+  version '0.2.1'
   url 'https://circle.xmera.de/projects/redmine-legal-notes'
   author_url 'https://xmera.de'
 
