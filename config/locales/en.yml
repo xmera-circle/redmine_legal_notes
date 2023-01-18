@@ -19,6 +19,6 @@ en:
   note_data_privacy_policy_link: 'Alternatively, you can add a link to an external
     data privacy policy.'
   note_user_privacy_consent_rails_6 : 'You can insert a relative link to your data 
-    privacy policy: /data-privacy-policy: /legal_notes?name=data-privacy-policy. 
+    privacy policy: /legal_notes?name=data-privacy-policy. 
     When you like to referece an external data privacy policy then you need to
     enter a full link.' 
