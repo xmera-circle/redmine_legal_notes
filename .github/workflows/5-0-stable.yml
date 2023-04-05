@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-      NAME: redmine_workload
+      NAME: redmine_legal_notes
     steps:
       - name: Set up chromedriver
         uses: nanasess/setup-chromedriver@master
@@ -78,20 +78,28 @@ jobs:
           echo '</policymap>' >> policy.xml
           sudo rm /etc/ImageMagick-6/policy.xml
           sudo mv policy.xml /etc/ImageMagick-6/policy.xml
-
       - name: Clone Redmine
         # Get the latest stable Redmine
         run: svn export http://svn.redmine.org/redmine/branches/5.0-stable/ redmine
+      - name: Checkout dependencies - Base Deface
+        uses: actions/checkout@v3
+        with:
+          repository: xmera-circle/redmine_base_deface
+          path: redmine/plugins/${{ env.NAME }}
+      - name: Checkout dependencies - Advanced Plugin Helper
+        uses: actions/checkout@v3
+        with:
+          repository: xmera-circle/advanced_plugin_helper
+          path: redmine/plugins/${{ env.NAME }}        
       - name: Checkout plugin
         uses: actions/checkout@v3
         with:
           path: redmine/plugins/${{ env.NAME }}
-
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: '3.0'
+          ruby-version: '3.1.4'
       - name: Setup database
         # Create the database
         run: | 
