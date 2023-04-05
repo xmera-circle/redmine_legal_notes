@@ -2,7 +2,7 @@
 
 Provide legal notes about your Redmine service
 
-![Redmine Plugin Version](https://img.shields.io/badge/Redmine_Plugin-v0.2.2-red) ![Redmine Version](https://img.shields.io/badge/Redmine-v5.0.z-blue) ![Language Support](https://img.shields.io/badge/Languages-en,_de-green) ![Version Stage](https://img.shields.io/badge/Stage-release-important)
+![Redmine Plugin Version](https://img.shields.io/badge/Redmine_Plugin-v0.2.2-red) ![Redmine Version](https://img.shields.io/badge/Redmine-v5.0.z-blue) ![Language Support](https://img.shields.io/badge/Languages-en,_de-green) ![Version Stage](https://img.shields.io/badge/Stage-release-important) ![develop](https://github.com/xmera-circle/redmine_legal_notes/actions/workflows/5-0-stable.yml/badge.svg)
 
 Redmine Legal Notes is a plugin which displays legal notice and data privacy policy on dedicated pages or links to remote pages. It also allows the administrator to configure a data policy consent field on the registration page.
 
