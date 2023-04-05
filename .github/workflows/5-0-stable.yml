@@ -85,12 +85,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: xmera-circle/redmine_base_deface
-          path: redmine/plugins/${{ env.NAME }}
+          path: redmine/plugins/redmine_base_deface
       - name: Checkout dependencies - Advanced Plugin Helper
         uses: actions/checkout@v3
         with:
           repository: xmera-circle/advanced_plugin_helper
-          path: redmine/plugins/${{ env.NAME }}        
+          path: redmine/plugins/advanced_plugin_helper     
       - name: Checkout plugin
         uses: actions/checkout@v3
         with:
